@@ -1,16 +1,20 @@
 import { FC, memo } from "react";
-import { Route } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 import { RootStore } from "../store";
-// import { useFetchActiveUser } from "./Router.service";
 
 export const ProtectedRoute: FC<any> = ({ component: Component, ...rest }) => {
-  const { appStore } = RootStore();
+  const history = useHistory();
+  const { authStore } = RootStore();
 
-  // useFetchActiveUser();
-  // pozovi sesiju umesto useFetchActiveUser
-
-  if (!appStore.loggedUser) {
-    return null;
+  if (!authStore.loggedUser) {
+    authStore
+      .fetchActiveAccount()
+      .then((res) => {
+        return null;
+      })
+      .catch(() => {
+        return history.push("/login");
+      });
   }
 
   return <Route {...rest} render={(props) => <Component {...props} />} />;

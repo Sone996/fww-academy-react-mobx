@@ -15,6 +15,7 @@ const authStore = new AuthStore();
 const appStore = new AppStore();
 
 export const RootStateProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
+  // console.log('ROOT',  authStore.loggedUser)
   return (
     <RootStateContext.Provider value={{ authStore, appStore }}>
       {children}

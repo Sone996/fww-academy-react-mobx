@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useState } from "react";
 import { ILogin, IRegister } from "../../types/types";
 // import { useMutation } from "react-query";
 // import { AppContext } from "../../Context/AppProvider";

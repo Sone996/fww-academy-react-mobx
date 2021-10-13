@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
-// import { LoginHook } from "../CustomHooks/LoginHook";
+import { useHistory } from "react-router-dom";
+import { RootStore } from "../../store";
 import { ILogin } from "../../types/types";
 
 const loginFormDefault: ILogin = {
@@ -8,8 +9,9 @@ const loginFormDefault: ILogin = {
 };
 
 const LoginComponent: FC<{ toggle: () => void }> = ({ toggle }) => {
+  const { authStore } = RootStore();
   const [form, setForm] = useState(loginFormDefault);
-  //   const useLogin = LoginHook();
+  const history = useHistory();
 
   const inputLoginHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setForm({
@@ -19,7 +21,19 @@ const LoginComponent: FC<{ toggle: () => void }> = ({ toggle }) => {
   };
 
   const loginSubmit = async () => {
-    // useLogin.mutate(form);
+    authStore
+      .loginAction(form)
+      .then((res) => {
+        console.log(res?.data.role);
+        if (res?.data.role === "teacher") {
+          history.push("/teacher-home");
+        } else {
+          history.push("/student-home");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

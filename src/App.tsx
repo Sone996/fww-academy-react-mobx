@@ -5,14 +5,13 @@ import {
   Redirect,
 } from "react-router-dom";
 import "./App.scss";
-import { RootStore } from "./store";
+// import { RootStore } from "./store";
 import Login from "./pages/Login";
+import AppLayout from "./Layouts/AppLayout";
+import ProtectedRoute from "./services/ProtectedRoute";
 
 function App() {
-  const { authStore, appStore } = RootStore();
-
-  console.log(authStore);
-  console.log(appStore);
+  // const { authStore, appStore } = RootStore();
 
   return (
     <div className="relative w-screen h-screen overflow-hidden flex">
@@ -21,10 +20,10 @@ function App() {
           <Route exact path="/login">
             <Login />
           </Route>
-          {/* <ProtectedRoute
+          <ProtectedRoute
             path="*"
-            component={AppLayoutNavigation}
-          ></ProtectedRoute> */}
+            component={AppLayout}
+          ></ProtectedRoute>
           <Route path="*" exact>
             <Redirect to={{ pathname: "/login" }} />
           </Route>
