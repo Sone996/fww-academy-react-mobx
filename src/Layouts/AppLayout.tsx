@@ -1,11 +1,15 @@
 import { observer } from "mobx-react-lite";
 import { FC } from "react";
-import { Route, Switch, useHistory } from "react-router";
+import { Route, Switch } from "react-router";
 import Navigation from "../components/shared/Navigation";
 import { RootStore } from "../store";
+// PAGES
+import TeacherHome from "../pages/Teacher/TeacherHome";
+import StudentHome from "../pages/Student/StudentHome";
+// END :: PAGES
 
 const AppLayout: FC = observer(() => {
-  const { appStore } = RootStore(); // for modal state and active user
+  const { authStore } = RootStore(); // for modal state and active user
 
   // modal logic
   //   const modalSwitch = (prop: string) => {
@@ -39,19 +43,19 @@ const AppLayout: FC = observer(() => {
         <Navigation></Navigation>
       </div>
       <div className="flex w-full">
-        {/* <Switch>
+        <Switch>
           {authStore.loggedUser?.role === "teacher" ? (
             <Route path="/teacher-home" component={TeacherHome} />
           ) : (
             <Route path="/student-home" component={StudentHome} />
           )}
-          <Route path="/profile/:id" component={Profile} />
+          {/* <Route path="/profile/:id" component={Profile} />
           <Route path="/member-list" component={MemberList} />
           <Route path="/new-course" component={NewCourse} />
           <Route path="/course-list" component={CourseList} />
           <Route path="/single-course/:id" component={SingleCourse} />
-          <Route path="/student-aplications" component={StudentAplications} />
-        </Switch> */}
+          <Route path="/student-aplications" component={StudentAplications} /> */}
+        </Switch>
       </div>
     </div>
   );
