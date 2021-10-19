@@ -24,7 +24,6 @@ const LoginComponent: FC<{ toggle: () => void }> = ({ toggle }) => {
     authStore
       .loginAction(form)
       .then((res) => {
-        console.log(res?.data.role);
         if (res?.data.role === "teacher") {
           history.push("/teacher-home");
         } else {

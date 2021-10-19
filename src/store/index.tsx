@@ -7,7 +7,7 @@ import { PersonStore } from "./personeModule/PersonStore";
 type RootStateContextValue = {
   authStore: AuthStore;
   appStore: AppStore;
-  courStore: CourseStore;
+  courseStore: CourseStore;
   personStore: PersonStore;
 };
 
@@ -17,14 +17,14 @@ const RootStateContext = createContext<RootStateContextValue>(
 
 const authStore = new AuthStore();
 const appStore = new AppStore();
-const courStore = new CourseStore();
+const courseStore = new CourseStore();
 const personStore = new PersonStore();
 
 export const RootStateProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   // console.log('ROOT',  authStore.loggedUser)
   return (
     <RootStateContext.Provider
-      value={{ authStore, appStore, courStore, personStore }}
+      value={{ authStore, appStore, courseStore, personStore }}
     >
       {children}
     </RootStateContext.Provider>

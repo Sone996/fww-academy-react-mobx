@@ -6,6 +6,7 @@ import { RootStore } from "../store";
 // PAGES
 import TeacherHome from "../pages/Teacher/TeacherHome";
 import StudentHome from "../pages/Student/StudentHome";
+import SingleCourse from "../pages/Shared/SingleCourse";
 // END :: PAGES
 
 const AppLayout: FC = observer(() => {
@@ -49,12 +50,16 @@ const AppLayout: FC = observer(() => {
           ) : (
             <Route path="/student-home" component={StudentHome} />
           )}
-          {/* <Route path="/profile/:id" component={Profile} />
-          <Route path="/member-list" component={MemberList} />
-          <Route path="/new-course" component={NewCourse} />
-          <Route path="/course-list" component={CourseList} />
+          {/* <Route path="/profile/:id" component={Profile} /> */}
+          {/* <Route path="/member-list" component={MemberList} /> */}
+          {/* <Route path="/new-course" component={NewCourse} /> */}
+          {/* <Route path="/course-list" component={CourseList} /> */}
           <Route path="/single-course/:id" component={SingleCourse} />
-          <Route path="/student-aplications" component={StudentAplications} /> */}
+          {/* <ProtectedRoute
+            path="/single-course/:id"
+            component={SingleCourse}
+          ></ProtectedRoute> */}
+          {/* <Route path="/student-aplications" component={StudentAplications} /> */}
         </Switch>
       </div>
     </div>
