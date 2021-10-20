@@ -15,7 +15,7 @@ const SingleCourse: FC = observer(() => {
   let x = history.location.pathname.split("/");
   let id = x[x.length - 1];
 
-  useFetchSingleCourse(authStore.loggedUser.id);
+  useFetchSingleCourse(id);
 
   useEffect(() => {
     courseStore

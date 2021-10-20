@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { FC, useState } from "react";
 import { RootStore } from "../../store";
+import { INewCourse } from "../../types/types";
 
 const formInterface = {
   name: "",
@@ -10,7 +11,7 @@ const formInterface = {
 
 const NewCourse: FC = observer(() => {
   const { courseStore } = RootStore();
-  const [form, setForm] = useState(formInterface);
+  const [form, setForm] = useState<INewCourse>(formInterface);
 
   const inputHandler = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

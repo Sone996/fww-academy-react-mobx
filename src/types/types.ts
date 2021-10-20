@@ -59,3 +59,9 @@ export interface IRequestAcceptForm {
   course_id: null | number;
   accepted: null | boolean;
 }
+
+export interface INewCourse {
+  name: string;
+  price: string;
+  description: string;
+}

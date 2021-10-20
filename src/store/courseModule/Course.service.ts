@@ -1,5 +1,6 @@
 import { courseRepo } from "./Course.repo";
 import omit from "lodash/omit";
+import { INewCourse } from "../../types/types";
 
 class CourseService {
   studentsOnCourse(data: any) {
@@ -13,7 +14,7 @@ class CourseService {
     });
   }
 
-  createCourse(data: any) {
+  createCourse(data: INewCourse) {
     return courseRepo.createCourse(data);
   }
 
@@ -36,6 +37,10 @@ class CourseService {
       userId: data.userId,
       data: omit(data, ["courseId", "teacherId", "userId"]),
     });
+  }
+
+  deleteCourse(id: number) {
+    return courseRepo.deleteCourse(id);
   }
 }
 

@@ -1,4 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
+import { INewCourse } from "../../types/types";
 import { courseService } from "./Course.service";
 
 export class CourseStore {
@@ -81,7 +82,7 @@ export class CourseStore {
       return Promise.reject(error);
     }
   };
-  createCourse = async (data: any) => {
+  createCourse = async (data: INewCourse) => {
     try {
       const res = await courseService.createCourse(data);
       return Promise.resolve(res.data);
@@ -89,5 +90,13 @@ export class CourseStore {
       return Promise.reject(error);
     }
   };
+  deleteCourse = async (id: number) => {
+    try {
+      const res = await courseService.deleteCourse(id);
+      return Promise.resolve(res.data)
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
   // END :: ACTIONS
 }
