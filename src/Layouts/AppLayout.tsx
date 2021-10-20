@@ -10,6 +10,7 @@ import SingleCourse from "../pages/Shared/SingleCourse";
 import Profile from "../pages/Shared/Profile";
 import CourseList from "../pages/Shared/CourseList";
 import MemberList from "../pages/Teacher/MemberList";
+import NewCourse from "../pages/Teacher/NewCourse";
 // END :: PAGES
 
 const AppLayout: FC = observer(() => {
@@ -55,13 +56,9 @@ const AppLayout: FC = observer(() => {
           )}
           <Route path="/profile/:id" component={Profile} />
           <Route path="/member-list" component={MemberList} />
-          {/* <Route path="/new-course" component={NewCourse} /> */}
+          <Route path="/new-course" component={NewCourse} />
           <Route path="/course-list" component={CourseList} />
           <Route path="/single-course/:id" component={SingleCourse} />
-          {/* <ProtectedRoute
-            path="/single-course/:id"
-            component={SingleCourse}
-          ></ProtectedRoute> */}
           {/* <Route path="/student-aplications" component={StudentAplications} /> */}
         </Switch>
       </div>

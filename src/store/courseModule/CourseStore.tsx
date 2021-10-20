@@ -81,5 +81,13 @@ export class CourseStore {
       return Promise.reject(error);
     }
   };
+  createCourse = async (data: any) => {
+    try {
+      const res = await courseService.createCourse(data);
+      return Promise.resolve(res.data);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
   // END :: ACTIONS
 }
