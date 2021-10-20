@@ -45,6 +45,7 @@ export interface ISingleCourse {
   description: string | null;
   id: number;
   name: string;
+  price: string | number;
 }
 
 export interface IFinishCourseForm {
