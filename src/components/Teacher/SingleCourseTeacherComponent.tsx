@@ -1,7 +1,4 @@
-import { observer } from "mobx-react-lite";
 import { FC } from "react";
-import { useHistory } from "react-router";
-import useFetchStudentsOnCourse from "../../customHooks/useFetchStudentsOnCourse";
 import { ISingleCourse } from "../../types/types";
 import Scroll from "../shared/Scroll";
 import SimpleTable from "../shared/SimpleTable";

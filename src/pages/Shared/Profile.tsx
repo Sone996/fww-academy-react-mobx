@@ -1,51 +1,42 @@
 import { observer } from "mobx-react-lite";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { RootStore } from "../../store";
-// import { personService } from "../../Modules/PersonModule/Person.service";
 // COMPONENTS
-// import TeacherProfileComponent from "../../Components/Teacher/TeacherProfileComponent";
-// import StudentProfileComponent from "../../Components/Student/StudentProfileComponent";
+import TeacherProfileComponent from "../../components/Teacher/TeacherProfileComopnent";
+import StudentProfileComponent from "../../components/Student/StudentProfileComponent";
 // import { errorMsg } from "../../Services/MessageDisplayHandler";
 // import { notificationMsg } from "../../Services/BaseService";
 // END :: COMPONENTS
 
-// const initLoad = async (fullPath: string) => {
-//     let lastPart = fullPath.split("/");
-//     let id = lastPart[lastPart.length - 1];
-//     const res = await personService.goProfile(id);
-//     return res.data;
-// }
-
 const Profile: FC = observer(() => {
-  const { authStore, personStore } = RootStore();
+  const { personStore } = RootStore();
   const history = useHistory();
 
-  //   const profileData = useQuery(
-  //     "profile",
-  //     () => initLoad(history.location.pathname),
-  //     {
-  //       onError: (err) => {
-  //         errorMsg(notificationMsg(err, null));
-  //       },
-  //       onSettled: (val: any) => {},
-  //     }
-  //   );
+  useEffect(() => {
+    let lastPart = history.location.pathname.split("/");
+    let id = lastPart[lastPart.length - 1];
+    personStore.fetchProfile(id);
+  }, [personStore, history.location.pathname]);
 
   return (
     <div className="profile flex flex-col w-full h-full">
       <div className="flex flex-col items-start p-6 text-xl border-b">
-        {/* <span>Name: {profileData.data?.name}</span>
-        <span>Surname: {profileData.data?.surname}</span>
-        <span>Email: {profileData.data?.email}</span>
-        <span>Role: {profileData.data?.role}</span> */}
+        <span>Name: {personStore.getProfileData?.name}</span>
+        <span>Surname: {personStore.getProfileData?.surname}</span>
+        <span>Email: {personStore.getProfileData?.email}</span>
+        <span>Role: {personStore.getProfileData?.role}</span>
       </div>
       <div className="flex flex-col h-full">
-        {/* {loggedUser.role === "teacher" ? (
+        {personStore.profileData &&
+        personStore.profileData.role === "teacher" ? (
           <TeacherProfileComponent />
-        ) : (
+        ) : personStore.profileData &&
+          personStore.profileData.role === "student" ? (
           <StudentProfileComponent />
-        )} */}
+        ) : (
+          <div>wrong role</div>
+        )}
       </div>
     </div>
   );

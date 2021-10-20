@@ -6,7 +6,7 @@ import { RootStore } from "../../store";
 import logo from "../../assets/images/factoryww.png";
 
 const Navigation: FC = observer(() => {
-  const { authStore } = RootStore(); // for modal state and active user
+  const { authStore, personStore } = RootStore(); // for modal state and active user
   const history = useHistory();
 
   const goHome = () => {
@@ -17,18 +17,14 @@ const Navigation: FC = observer(() => {
     }
   };
   const goProfile = () => {
-    // personService
-    //   .goProfile(loggedUser?.id)
-    //   .then((res) => {
-    //     dispatch({
-    //       type: ActionTypes.SET_PROFILE_DATA,
-    //       payload: res.data,
-    //     });
-    //     history.push({ pathname: `/profile/${res.data.id}` });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response.data.errors);
-    //   });
+    personStore
+      .fetchProfile(authStore.loggedUser.id)
+      .then((res: any) => {
+        history.push({ pathname: `/profile/${res.id}` });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const myStudents = () => {
     history.push("/member-list");
