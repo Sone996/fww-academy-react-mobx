@@ -8,6 +8,7 @@ export class PersonStore {
   profileData: any = null;
   completedCourses: any = null;
   myStudents: any = null;
+  studentAplications: any = null;
   // END :: STATE
 
   constructor() {
@@ -29,6 +30,9 @@ export class PersonStore {
   }
   get getMyStudents() {
     return this.myStudents;
+  }
+  get getStudentAplications() {
+    return this.studentAplications;
   }
   // END :: COMPUTED
 
@@ -123,6 +127,17 @@ export class PersonStore {
         this.myStudents = res.data;
       });
       return Promise.resolve(res.data);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+  fetchAplicationRequests = async () => {
+    try {
+      const res = await personService.fetchAplicationRequests();
+      runInAction(() => {
+        this.studentAplications = res.data;
+      });
+      return Promise.resolve(res);
     } catch (error) {
       return Promise.reject(error);
     }

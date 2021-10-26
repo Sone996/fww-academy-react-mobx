@@ -11,6 +11,7 @@ import Profile from "../pages/Shared/Profile";
 import CourseList from "../pages/Shared/CourseList";
 import MemberList from "../pages/Teacher/MemberList";
 import NewCourse from "../pages/Teacher/NewCourse";
+import StudentAplications from "../pages/Teacher/StudentAplications";
 // END :: PAGES
 
 const AppLayout: FC = observer(() => {
@@ -59,7 +60,7 @@ const AppLayout: FC = observer(() => {
           <Route path="/new-course" component={NewCourse} />
           <Route path="/course-list" component={CourseList} />
           <Route path="/single-course/:id" component={SingleCourse} />
-          {/* <Route path="/student-aplications" component={StudentAplications} /> */}
+          <Route path="/student-aplications" component={StudentAplications} />
         </Switch>
       </div>
     </div>

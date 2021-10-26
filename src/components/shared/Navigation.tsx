@@ -72,18 +72,15 @@ const Navigation: FC = observer(() => {
               My Students
             </span>
             <span className="my-2 cursor-pointer" onClick={newCourseHandler}>
-              {" "}
               New Course
             </span>
             <span className="my-2 cursor-pointer" onClick={CourseListHandler}>
-              {" "}
               Course List
             </span>
             <span
               className="my-2 cursor-pointer"
               onClick={studentAplicationsHandler}
             >
-              {" "}
               Student aplications
             </span>
           </>
@@ -91,7 +88,6 @@ const Navigation: FC = observer(() => {
           <></>
         )}
         <span className="my-2 cursor-pointer" onClick={logout}>
-          {" "}
           Logout
         </span>
       </div>
