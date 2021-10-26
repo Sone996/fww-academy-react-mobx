@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { INewCourse } from "../../types/types";
+import { IFinishCourseForm, INewCourse } from "../../types/types";
 import { courseService } from "./Course.service";
 
 export class CourseStore {
@@ -41,7 +41,7 @@ export class CourseStore {
   // END :: MUTATIONS
 
   //   ACTIONS
-  fetchStudentsOnCourse = async (id: any) => {
+  fetchStudentsOnCourse = async (id: {}) => {
     try {
       const res = await courseService.studentsOnCourse(id);
       runInAction(() => {
@@ -93,10 +93,18 @@ export class CourseStore {
   deleteCourse = async (id: number) => {
     try {
       const res = await courseService.deleteCourse(id);
-      return Promise.resolve(res.data)
+      return Promise.resolve(res.data);
     } catch (error) {
-      return Promise.reject(error)
+      return Promise.reject(error);
     }
-  }
+  };
+  completeCourse = async (data: IFinishCourseForm) => {
+    try {
+      const res = await courseService.completeCourse(data);
+      return Promise.resolve(res);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
   // END :: ACTIONS
 }

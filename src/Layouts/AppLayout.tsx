@@ -13,37 +13,42 @@ import MemberList from "../pages/Teacher/MemberList";
 import NewCourse from "../pages/Teacher/NewCourse";
 import StudentAplications from "../pages/Teacher/StudentAplications";
 // END :: PAGES
+// MODALS
+import FinishingCourseModal from "../components/modals/FinishingCourseModal";
+import RequestAcceptModal from "../components/modals/RequestAcceptModal";
+import RateModal from "../components/modals/RateModal";
+// END :: MODALS
 
 const AppLayout: FC = observer(() => {
-  const { authStore } = RootStore(); // for modal state and active user
+  const { appStore, authStore } = RootStore(); // for modal state and active user
 
   // modal logic
-  //   const modalSwitch = (prop: string) => {
-  //     switch (prop) {
-  //       case "finishing-course-modal":
-  //         return <FinishingCourseModal />;
-  //       case "requrest-accept-modal":
-  //         return <RequestAcceptModal />;
-  //       case "rate-course":
-  //         return <RateCourse />;
-  //       default:
-  //         break;
-  //     }
-  //   };
+  const modalSwitch = (prop: string) => {
+    switch (prop) {
+      case "finishing-course-modal":
+        return <FinishingCourseModal />;
+      case "requrest-accept-modal":
+        return <RequestAcceptModal />;
+      case "rate-course":
+        return <RateModal />;
+      default:
+        break;
+    }
+  };
   // END :: modal logic
   return (
     <div className="flex w-full h-full">
       {/* MODALS */}
-      {/* {contextState.modal.status ? (
+      {appStore.getModal.status ? (
         <div className="fixed top-0 left-0 h-screen w-screen flex modal">
           <div className="modal-overlay fixed top-0 left-0 modal-overlay h-screen w-screen flex"></div>
           <div className="modal flex items-center justify-center w-full">
-            {modalSwitch(contextState.modal.name)}
+            {modalSwitch(appStore.getModal.name)}
           </div>
         </div>
       ) : (
         <></>
-      )} */}
+      )}
       {/* END :: MODALS */}
       <div className="flex flex-col h-full bg-gray-500 w-2/12 items-center">
         <Navigation></Navigation>

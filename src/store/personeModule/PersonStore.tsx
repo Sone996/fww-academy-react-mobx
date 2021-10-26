@@ -87,6 +87,7 @@ export class PersonStore {
       return Promise.reject(error);
     }
   };
+
   fetchNotCompletedCourses = async () => {
     try {
       const res = await personService.fetchNotCompletedCourses();
@@ -98,6 +99,7 @@ export class PersonStore {
       return Promise.reject(error);
     }
   };
+
   fetchProfile = async (id: number | string) => {
     try {
       const res = await personService.goProfile(id);
@@ -109,6 +111,7 @@ export class PersonStore {
       return Promise.reject(error);
     }
   };
+
   fetchCompletedCourses = async (id: number) => {
     try {
       const res = await personService.fetchCompletedCourses(id);
@@ -120,6 +123,7 @@ export class PersonStore {
       return Promise.reject(error);
     }
   };
+
   fetchMyStudents = async () => {
     try {
       const res = await personService.fetchMyStudents();
@@ -131,12 +135,40 @@ export class PersonStore {
       return Promise.reject(error);
     }
   };
+
   fetchAplicationRequests = async () => {
     try {
       const res = await personService.fetchAplicationRequests();
       runInAction(() => {
         this.studentAplications = res.data;
       });
+      return Promise.resolve(res);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
+  resolveRequest = async (data: any) => {
+    try {
+      const res = await personService.resolveRequest(data);
+      return Promise.resolve(res);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
+  fetchNotRatedCourses = async (id: number) => {
+    try {
+      const res = await personService.fetchNotRatedCourses(id);
+      return Promise.resolve(res.data);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
+  completeCourse = async (data: any) => {
+    try {
+      const res = await personService.completeCourse(data);
       return Promise.resolve(res);
     } catch (error) {
       return Promise.reject(error);

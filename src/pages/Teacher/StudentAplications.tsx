@@ -18,13 +18,9 @@ const parseAplication = (val: any) => {
 };
 
 const StudentAplications: FC = observer(() => {
-  const { personStore } = RootStore();
+  const { appStore, personStore } = RootStore();
   const [model, setModel] = useState([]);
   const titles = ["Student Id", "Course Id", "Accept"];
-
-  useEffect(() => {
-    personStore.fetchAplicationRequests();
-  }, [personStore]);
 
   const getActive = () => {
     let active = personStore.getStudentAplications;
@@ -42,27 +38,15 @@ const StudentAplications: FC = observer(() => {
 
   const singleView = (item: any) => {
     if (item.accepted === true) {
-      console.log("accepted");
-      //   dispatch({
-      //     type: ActionTypes.SET_MODAL,
-      //     payload: {
-      //       name: "finishing-course-modal",
-      //       status: true,
-      //       data: item,
-      //     },
-      //   });
+      appStore.setModal("finishing-course-modal", true, item);
     } else {
-      console.log("not accepted");
-      //   dispatch({
-      //     type: ActionTypes.SET_MODAL,
-      //     payload: {
-      //       name: "requrest-accept-modal",
-      //       status: true,
-      //       data: item,
-      //     },
-      //   });
+      appStore.setModal("requrest-accept-modal", true, item);
     }
   };
+
+  useEffect(() => {
+    personStore.fetchAplicationRequests();
+  }, [personStore]);
 
   return (
     <div className="student-aplications flex-col flex w-full">
