@@ -48,6 +48,7 @@ const RateModal: FC = () => {
           value={form.comment}
           onChange={inputHandler}
           name="comment"
+          data-cy="rateComment"
           className="border resize-none w-full rounded p-3"
           placeholder="Your ocmment"
         />
@@ -58,6 +59,7 @@ const RateModal: FC = () => {
             onChange={inputHandler}
             name="mark"
             className="input"
+            data-cy="rateGrade"
             type="text"
             placeholder="1-5"
           />

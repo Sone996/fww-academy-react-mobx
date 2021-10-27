@@ -46,6 +46,7 @@ const LoginComponent: FC<{ toggle: () => void }> = ({ toggle }) => {
           className="input"
           type="text"
           name="email"
+          placeholder="E-mail"
           value={form.email}
           onChange={inputLoginHandler}
         />
@@ -56,6 +57,7 @@ const LoginComponent: FC<{ toggle: () => void }> = ({ toggle }) => {
           className="input"
           type="password"
           name="password"
+          placeholder="password"
           value={form.password}
           onChange={inputLoginHandler}
         />

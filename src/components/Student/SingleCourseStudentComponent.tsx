@@ -42,13 +42,15 @@ const SingleCourseStudentComponent: FC<{ data: ISingleCourse }> = observer(
 
     return (
       <div className="course flex w-full">
-        <div className="flex flex-col w-1/3 items-start py-4 px-4 border-r text-xl font-bold border-b">
+        <div className="course-data flex flex-col w-1/3 items-start py-4 px-4 border-r text-xl font-bold border-b">
           <div className="flex flex-col w-full items-start">
-            <span>Name: {data.name}</span>
-            <span>Price: {data.price}</span>
+            <span data-cy="courseName">Name: {data.name}</span>
+            <span data-cy="coursePrice">Price: {data.price}</span>
           </div>
           <div className="flex border whitespace-pre-line h-full overflow-y-auto mb-4">
-            <span>{data.description}</span>
+            <span data-cy="courseDescription">
+              {data.description ? data.description : ""}
+            </span>
           </div>
         </div>
         <div className="flex flex-col items-center w-full">
@@ -59,6 +61,7 @@ const SingleCourseStudentComponent: FC<{ data: ISingleCourse }> = observer(
                   v-model="form.comment"
                   value={form.comment}
                   onChange={commentHandler}
+                  data-cy="buyCourseComment"
                   className="border resize-none w-full rounded p-3"
                   placeholder="Message for professor"
                 />

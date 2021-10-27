@@ -59,6 +59,7 @@ const SimpleTable: FC<{ titles: any; model: any; singleView?: any }> = ({
                     {column.map((col, index) => (
                       <td
                         key={index}
+                        data-cy={`${col}_${item[column[index]]}`}
                         className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center"
                       >
                         {typeof item[column[index]] === "boolean"

@@ -45,6 +45,7 @@ const NewCourse: FC = observer(() => {
             className="input"
             type="text"
             autoComplete="off"
+            placeholder="Name"
             value={form?.name}
             name="name"
             onChange={inputHandler}
@@ -56,6 +57,7 @@ const NewCourse: FC = observer(() => {
             className="input"
             type="number"
             autoComplete="off"
+            placeholder="Price"
             value={form?.price}
             name="price"
             onChange={inputHandler}

@@ -28,13 +28,15 @@ const SingleCourseTeacherComponent: FC<{
 
   return (
     <div className="course flex w-full">
-      <div className="flex flex-col w-1/3 items-start py-4 px-4 border-r text-xl font-bold border-b">
+      <div className="course-data flex flex-col w-1/3 items-start py-4 px-4 border-r text-xl font-bold border-b">
         <div className="flex flex-col w-full items-start">
-          <span>Name: {singleCourse?.name}</span>
-          <span>Price: {singleCourse?.price}</span>
+          <span data-cy="courseName">Name: {singleCourse?.name}</span>
+          <span data-cy="coursePrice">Price: {singleCourse?.price}</span>
         </div>
         <div className="flex border whitespace-pre-line w-full h-full overflow-y-auto mb-4">
-          <span>{singleCourse?.description}</span>
+          <span data-cy="courseDescription">
+            {singleCourse?.description ? singleCourse.description : ""}
+          </span>
         </div>
         <div className="flex justify-end w-full">
           <span className="button bg-darkRed" onClick={deleteCourseHandler}>

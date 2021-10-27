@@ -24,7 +24,14 @@ const RequestAcceptModal: FC = () => {
         .resolveRequest(form)
         .then((res) => {
           console.log(res);
-          appStore.closeModal();
+          personStore
+            .fetchAplicationRequests()
+            .then(() => {
+              appStore.closeModal();
+            })
+            .catch((err) => {
+              console.log(err.response.data.errors);
+            });
         })
         .catch((err) => {
           console.log(err.response.data.errors);
